@@ -1,16 +1,27 @@
-## Hi there 👋
+# PanDuroDev
 
-<!--
-**PanDuroDev/PanDuroDev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## 👋 مرحباً، أنا dev.bread
 
-Here are some ideas to get you started:
+مبرمج C++ مهتم بتطوير الألعاب، أنظمة الأداء، ومحركات الألعاب.  
+أتابع التقنيات الحديثة، خصوصًا في البرمجة، لينكس، والهاردوير.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+## 🧠 الاهتمامات
+- تطوير الألعاب (Game Development)
+- C++
+- محركات الألعاب (Game Engines)
+- تحسين الأداء (Performance Optimization)
+- لينكس وأنظمة التشغيل
+- تقنيات وبرمجيات حديثة
+
+---
+
+## 📊 إحصائياتي
+
+[![](https://ghstats.dev/api/card?username=PanDuroDev&theme=default)](https://github.com/rowkav09/GitHub-profile-stats)
+
+---
+
+## 📌 GitHub
+https://github.com/PanDuroDev
