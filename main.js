@@ -355,6 +355,9 @@ document.addEventListener("contextmenu", e => {
     items.push({ label: "Copy text", icon: "fa-solid fa-copy", action: () => navigator.clipboard?.writeText(text) });
   }
 
+  items.push("divider");
+  items.push({ label: "Show tour guide", icon: "fa-solid fa-map", action: () => openTour() });
+
   if (!items.length) {
     items.push({ label: "Nothing available", icon: null, class: "disabled" });
   }
@@ -433,3 +436,142 @@ document.addEventListener("keydown", e => {
 });
 
 document.addEventListener("click", closeCtx);
+
+/* ── Tour Guide ── */
+
+const TOUR_KEY = "dbd_tour_done";
+const tourOverlay = document.getElementById("tour-overlay");
+const tourHighlight = document.getElementById("tour-highlight");
+const tourBox = document.getElementById("tour-box");
+const tourConnector = document.getElementById("tour-connector");
+const tourTitle = document.getElementById("tour-title");
+const tourDesc = document.getElementById("tour-desc");
+const tourStep = document.getElementById("tour-step");
+const tourPrev = document.getElementById("tour-prev");
+const tourNext = document.getElementById("tour-next");
+const tourSkip = document.getElementById("tour-skip");
+
+const tourSteps = [
+  {
+    target: null,
+    title: "! أهلاً بك",
+    desc: "هذا دليل سريع لمساعدتك في التنقل في الموقع. اضغط على <b>التالي</b> للمتابعة.",
+    pos: "center",
+  },
+  {
+    target: "#music-toggle",
+    title: "زر الموسيقى",
+    desc: 'اضغط <b>ضغطة قصيرة</b> لتشغيل / إيقاف الموسيقى.<br><br>اضغط <b>ضغطة طويلة</b> (400ms) لفتح مشغل الفيديو كامل الشاشة مع عناصر تحكم مخصصة.',
+    pos: "bottom",
+  },
+  {
+    target: "header > nav",
+    title: "التنقل",
+    desc: 'استخدم روابط التنقل في الأعلى للانتقال بين الأقسام.<br><br>في الجوال، افتح القائمة من أيقونة الخطوط الثلاثة (☰).<br><br>يمكنك أيضاً استخدام الأسهم ∞ والنقاط في الأسفل.',
+    pos: "bottom",
+  },
+  {
+    target: null,
+    title: "! انتهينا",
+    desc: "يمكنك فتح هذا الدليل مرة أخرى من قائمة الزر الأيمن (Context Menu) في أي وقت.",
+    pos: "center",
+  },
+];
+
+let tourStepIdx = 0;
+
+const showTourStep = (idx) => {
+  const step = tourSteps[idx];
+  tourTitle.innerHTML = step.title;
+  tourDesc.innerHTML = step.desc;
+  tourStep.textContent = `${idx + 1} / ${tourSteps.length}`;
+  tourPrev.classList.toggle("hidden", idx === 0);
+  tourNext.textContent = idx === tourSteps.length - 1 ? "تم" : "التالي";
+
+  tourHighlight.classList.remove("visible");
+  tourConnector.className = "tour-connector";
+  tourBox.style.left = "";
+  tourBox.style.top = "";
+  tourBox.style.transform = "";
+
+  clearConnector();
+
+  if (step.target) {
+    const el = document.querySelector(step.target);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      tourHighlight.style.left = rect.left - 8 + "px";
+      tourHighlight.style.top = rect.top - 8 + "px";
+      tourHighlight.style.width = rect.width + 16 + "px";
+      tourHighlight.style.height = rect.height + 16 + "px";
+      tourHighlight.classList.add("visible");
+
+      if (step.pos === "bottom") {
+        tourBox.style.left = Math.max(16, Math.min(rect.left + rect.width / 2 - 160, window.innerWidth - 340)) + "px";
+        tourBox.style.top = rect.bottom + 28 + "px";
+        showConnector("top", rect.bottom + 8, rect.left + rect.width / 2);
+      } else if (step.pos === "top") {
+        const boxH = tourBox.offsetHeight || 200;
+        tourBox.style.left = Math.max(16, Math.min(rect.left + rect.width / 2 - 160, window.innerWidth - 340)) + "px";
+        tourBox.style.top = rect.top - 28 - boxH + "px";
+        showConnector("bottom", rect.top - 8, rect.left + rect.width / 2);
+      }
+    }
+  } else {
+    tourBox.style.left = "50%";
+    tourBox.style.top = "50%";
+    tourBox.style.transform = "translate(-50%, -50%)";
+  }
+};
+
+const showConnector = (dir, y, x) => {
+  tourConnector.className = `tour-connector ${dir}`;
+  tourConnector.style.display = "block";
+  if (dir === "top") {
+    tourConnector.style.left = x + "px";
+    tourConnector.style.top = y + "px";
+  } else if (dir === "bottom") {
+    tourConnector.style.left = x + "px";
+    tourConnector.style.top = y + "px";
+  }
+};
+const clearConnector = () => {
+  tourConnector.style.display = "none";
+};
+
+tourNext.addEventListener("click", () => {
+  if (tourStepIdx === tourSteps.length - 1) {
+    closeTour();
+    return;
+  }
+  tourStepIdx++;
+  showTourStep(tourStepIdx);
+});
+tourPrev.addEventListener("click", () => {
+  if (tourStepIdx === 0) return;
+  tourStepIdx--;
+  showTourStep(tourStepIdx);
+});
+tourSkip.addEventListener("click", closeTour);
+
+const closeTour = () => {
+  tourOverlay.classList.remove("open");
+  tourHighlight.classList.remove("visible");
+  clearConnector();
+  localStorage.setItem(TOUR_KEY, "1");
+};
+
+const openTour = () => {
+  tourStepIdx = 0;
+  tourOverlay.classList.add("open");
+  showTourStep(0);
+};
+
+if (!localStorage.getItem(TOUR_KEY)) {
+  setTimeout(openTour, 600);
+}
+
+tourOverlay.addEventListener("click", (e) => {
+  if (e.target.closest(".tour-box")) return;
+  closeTour();
+});
