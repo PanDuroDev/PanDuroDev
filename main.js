@@ -561,8 +561,6 @@ const openTour = () => {
   showTourStep(0);
 };
 
-document.getElementById("tour-trigger")?.addEventListener("click", openTour);
-
 if (!localStorage.getItem(TOUR_KEY)) {
   setTimeout(openTour, 600);
 }
