@@ -370,10 +370,12 @@ main {
 
 .skill-card i {
   font-size: 2.5rem;
+  color: var(--accent);
 }
 
 .skill-card--minor i {
   font-size: 1.8rem;
+  color: var(--accent);
 }
 
 .skill-card--minor h2 {
