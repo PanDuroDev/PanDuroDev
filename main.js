@@ -93,14 +93,11 @@ audio.volume = 0.04;
 
 const syncAllVideos = (t) => {
   if (btnVideo) btnVideo.currentTime = t;
-  if (aboutVideo) aboutVideo.currentTime = t;
 };
 
 const play = () => {
   const t = audio.currentTime;
-  syncAllVideos(t);
-  if (btnVideo) btnVideo.play().catch(() => {});
-  if (aboutVideo) aboutVideo.play().catch(() => {});
+  if (btnVideo) { btnVideo.currentTime = t; btnVideo.play().catch(() => {}); }
   audio.play().catch(() => {});
   btn.classList.remove("muted");
   btn.querySelector("i").className = "fa-solid fa-volume-high";
@@ -109,7 +106,6 @@ const play = () => {
 const pause = () => {
   audio.pause();
   btnVideo?.pause();
-  aboutVideo?.pause();
   btn.classList.add("muted");
   btn.querySelector("i").className = "fa-solid fa-volume-xmark";
   btn.title = "تشغيل الموسيقى";
@@ -118,9 +114,7 @@ const pause = () => {
 const tryAutoplay = () => {
   audio.play().then(() => {
     const t = audio.currentTime;
-    syncAllVideos(t);
-    if (btnVideo) btnVideo.play().catch(() => {});
-    if (aboutVideo) aboutVideo.play().catch(() => {});
+    if (btnVideo) { btnVideo.currentTime = t; btnVideo.play().catch(() => {}); }
     btn.classList.remove("muted");
     btn.querySelector("i").className = "fa-solid fa-volume-high";
   }).catch(() => {
@@ -140,7 +134,6 @@ const syncVideos = () => {
   if (audio.paused || overlay.classList.contains("open")) return;
   const t = audio.currentTime;
   if (btnVideo && Math.abs(btnVideo.currentTime - t) > 0.3) btnVideo.currentTime = t;
-  if (aboutVideo && Math.abs(aboutVideo.currentTime - t) > 0.3) aboutVideo.currentTime = t;
 };
 audio.addEventListener("timeupdate", syncVideos);
 audio.addEventListener("seeked", () => syncAllVideos(audio.currentTime));
@@ -154,7 +147,6 @@ const startPress = (e) => {
     overlay.classList.add("open");
     document.body.style.overflow = "hidden";
     btnVideo?.pause();
-    aboutVideo?.pause();
     if (overlayVideo) {
       const sync = () => { overlayVideo.currentTime = audio.currentTime; };
       if (overlayVideo.readyState >= 1) sync();
@@ -204,6 +196,7 @@ const closeOverlay = () => {
     const t = overlayVideo.currentTime;
     audio.currentTime = t;
     syncAllVideos(t);
+    if (aboutVideo) aboutVideo.currentTime = t;
   }
   if (overlay.dataset.wasPlaying === "true") {
     play();
