@@ -569,3 +569,19 @@ tourOverlay.addEventListener("click", (e) => {
   if (e.target.closest(".tour-box")) return;
   closeTour();
 });
+
+document.getElementById("footer-year").textContent = new Date().getFullYear();
+
+/* ── Copy phone ── */
+
+document.getElementById("copy-phone")?.addEventListener("click", () => {
+  navigator.clipboard?.writeText("+201098402954").then(() => {
+    const btn = document.getElementById("copy-phone");
+    btn.classList.add("copied");
+    btn.querySelector("i").className = "fa-solid fa-check";
+    setTimeout(() => {
+      btn.classList.remove("copied");
+      btn.querySelector("i").className = "fa-solid fa-copy";
+    }, 2000);
+  }).catch(() => {});
+});

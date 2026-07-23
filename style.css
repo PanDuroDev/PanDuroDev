@@ -509,6 +509,45 @@ main {
   color: black;
 }
 
+.copy-btn {
+  background: none;
+  border: 1px solid var(--surface-alt);
+  border-radius: var(--radius-sm);
+  color: rgba(255,255,255,.5);
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 13px;
+  transition: .2s;
+}
+.copy-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.copy-btn.copied {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--bg-dark);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: .2s;
+  margin-top: 10px;
+}
+.cv-download-btn:hover {
+  background: var(--accent-light);
+  transform: scale(1.03);
+}
+
 /* ── Responsive: 820px ── */
 
 @media (max-width: 820px) {
@@ -1163,6 +1202,46 @@ main {
   padding: 4px 0;
   min-width: 100px;
   box-shadow: 0 4px 16px rgba(0,0,0,.5);
+}
+
+.skip-link {
+  position: fixed;
+  top: -9999px;
+  left: 50%;
+  z-index: 10000;
+  background: var(--accent);
+  color: var(--bg-dark);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 8px;
+  transform: translateX(-50%);
+}
+
+.site-footer {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.25);
+  pointer-events: none;
+  z-index: 0;
+}
+.site-footer p {
+  margin: 0;
+}
+
+@media (max-width: 750px) {
+  .site-footer {
+    bottom: 80px;
+  }
 }
 
 /* ── Tour Guide ── */

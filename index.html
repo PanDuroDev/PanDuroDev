@@ -1,10 +1,30 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="images/DBD.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DBD</title>
+    <title>dev.bread — مطور من فلسطين | DBD</title>
+    <meta name="description" content="المطور الشاب dev.bread من فلسطين، أبلغ من العمر 16 عاماً. أتقن لغة بايثون، Godot، HTML، CSS، JavaScript، C++. اعرض مشاريعي ومهاراتي في تصميم وتطوير الويب." />
+    <meta name="keywords" content="dev.bread, DBD, مطور, فلسطين, Python, Godot, HTML, CSS, JavaScript, C++, portfolio, مطور ويب" />
+    <meta name="author" content="dev.bread" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://pandurodev.github.io/PanDuroDev/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="dev.bread — مطور من فلسطين" />
+    <meta property="og:description" content="مطور شاب يتقن Python, Godot, HTML, CSS, JavaScript, C++. اعرض مشاريعي ومهاراتي." />
+    <meta property="og:url" content="https://pandurodev.github.io/PanDuroDev/" />
+    <meta property="og:image" content="https://pandurodev.github.io/PanDuroDev/images/DBD.png" />
+    <meta property="og:locale" content="ar_AR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="dev.bread — مطور من فلسطين" />
+    <meta name="twitter:description" content="مطور شاب يتقن Python, Godot, HTML, CSS, JavaScript, C++." />
+    <meta name="twitter:image" content="https://pandurodev.github.io/PanDuroDev/images/DBD.png" />
+
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,11 +42,34 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
     />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "dev.bread",
+      "alternateName": "DBD",
+      "url": "https://pandurodev.github.io/PanDuroDev/",
+      "image": "https://pandurodev.github.io/PanDuroDev/images/DBD.png",
+      "jobTitle": "مطور ويب",
+      "knowsAbout": ["Python", "Godot", "HTML", "CSS", "JavaScript", "C++"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PS"
+      },
+      "sameAs": [
+        "https://github.com/PanDuroDev",
+        "https://www.youtube.com/@devbread-db",
+        "https://www.reddit.com/user/Agreeable_Opinion938/",
+        "https://discord.com/users/1080073299092054016"
+      ]
+    }
+    </script>
   </head>
   <body id="home">
+    <a href="#about-me" class="skip-link">تخطي إلى المحتوى</a>
     <header>
       <div class="logo">
-        <img src="images/DBD.png" alt="" />
+        <img src="images/DBD.png" alt="dev.bread logo" loading="lazy" />
         <h1>dev.bread</h1>
         <button id="music-toggle" class="music-btn" title="تشغيل/إيقاف الموسيقى">
           <video src="music/video.mp4" muted playsinline controlslist="nodownload" disablePictureInPicture draggable="false"></video>
@@ -47,7 +90,7 @@
 
       <div class="nav">
         <div class="nav-header">
-          <img src="images/DBD.png" alt="" />
+          <img src="images/DBD.png" alt="dev.bread logo" />
           <span>dev.bread</span>
         </div>
         <div class="nav-body">
@@ -61,16 +104,19 @@
               <i class="fa-solid fa-phone"></i> +20 109 840 2954
             </p>
             <div class="contact-links">
-              <a href="tel:+201098402954"><i class="fa-solid fa-phone"></i></a>
-              <a href="https://discord.com/users/1080073299092054016"><i class="fa-brands fa-discord"></i></a>
-              <a href="https://www.youtube.com/@devbread-db"><i class="fa-brands fa-youtube"></i></a>
-              <a href="https://www.reddit.com/user/Agreeable_Opinion938/"><i class="fa-brands fa-reddit"></i></a>
+              <a href="tel:+201098402954" title="Phone"><i class="fa-solid fa-phone"></i></a>
+              <a href="mailto:devbread@duck.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+              <a href="https://discord.com/users/1080073299092054016" title="Discord"><i class="fa-brands fa-discord"></i></a>
+              <a href="https://www.youtube.com/@devbread-db" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+              <a href="https://www.reddit.com/user/Agreeable_Opinion938/" title="Reddit"><i class="fa-brands fa-reddit"></i></a>
+              <a href="https://www.linkedin.com/in/devbread" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://github.com/PanDuroDev" title="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
           </div>
         </div>
       </div>
 
-      <nav>
+      <nav aria-label="التنقل الرئيسي">
         <a href="#home">Home</a>
         <a href="#about-me">About Me</a>
         <a href="#my-skills">My Skills</a>
@@ -82,7 +128,7 @@
     </header>
 
     <main>
-      <div class="about-me" id="about-me">
+      <div class="about-me" id="about-me" role="region" aria-label="About Me">
         <h1>About <span>Me</span></h1>
         <div class="about-content">
           <div class="about-image">
@@ -102,7 +148,7 @@
         </div>
       </div>
 
-      <div class="my-skills" id="my-skills">
+      <div class="my-skills" id="my-skills" role="region" aria-label="My Skills">
         <h1><span>My</span> Skills</h1>
         <div class="skills-grid">
           <div class="skill-card">
@@ -144,7 +190,7 @@
         </div>
       </div>
 
-      <div class="current-projects" id="current-projects">
+      <div class="current-projects" id="current-projects" role="region" aria-label="Current Projects">
         <h1>Current <span>Projects</span></h1>
         <div class="projects-grid">
           <div class="project-card">
@@ -164,21 +210,31 @@
         </div>
       </div>
 
-      <div class="contact-section" id="contact">
+      <div class="contact-section" id="contact" role="region" aria-label="Contact">
         <h1>Contact <span>Me</span></h1>
 
-        <p class="contact-phone">
+        <p class="contact-phone" id="contact-phone-text">
           <i class="fa-solid fa-phone"></i> +20 109 840 2954
+          <button id="copy-phone" class="copy-btn" title="نسخ الرقم"><i class="fa-solid fa-copy"></i></button>
         </p>
 
         <div class="contact-links">
           <a href="tel:+201098402954" title="Phone"><i class="fa-solid fa-phone"></i></a>
+          <a href="mailto:devbread@duck.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
           <a href="https://discord.com/users/1080073299092054016" title="Discord"><i class="fa-brands fa-discord"></i></a>
           <a href="https://www.youtube.com/@devbread-db" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
           <a href="https://www.reddit.com/user/Agreeable_Opinion938/" title="Reddit"><i class="fa-brands fa-reddit"></i></a>
+          <a href="https://www.linkedin.com/in/devbread" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/PanDuroDev" title="GitHub"><i class="fa-brands fa-github"></i></a>
         </div>
+
+        <a href="cv.pdf" download class="cv-download-btn"><i class="fa-solid fa-file"></i> تحميل السيرة الذاتية (CV)</a>
       </div>
     </main>
+
+    <footer class="site-footer">
+      <p>© <span id="footer-year"></span> dev.bread. All rights reserved.</p>
+    </footer>
 
     <div id="slide-nav" class="slide-nav">
       <button id="slide-prev" class="slide-nav-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
