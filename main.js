@@ -432,7 +432,8 @@ document.addEventListener("click", closeCtx);
 
 /* ── Tour Guide ── */
 
-const TOUR_KEY = "dbd_tour_done";
+const TOUR_KEY = "dbd_tour_v2";
+localStorage.removeItem("dbd_tour_done");
 const tourOverlay = document.getElementById("tour-overlay");
 const tourHighlight = document.getElementById("tour-highlight");
 const tourBox = document.getElementById("tour-box");
@@ -559,6 +560,8 @@ const openTour = () => {
   tourOverlay.classList.add("open");
   showTourStep(0);
 };
+
+document.getElementById("tour-trigger")?.addEventListener("click", openTour);
 
 if (!localStorage.getItem(TOUR_KEY)) {
   setTimeout(openTour, 600);
