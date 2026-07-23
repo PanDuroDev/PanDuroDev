@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="images/DBD.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DBD</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+  </head>
+  <body id="home">
+    <header>
+      <div class="logo">
+        <img src="images/DBD.png" alt="" />
+        <h1>dev.bread</h1>
+        <button id="music-toggle" class="music-btn" title="تشغيل/إيقاف الموسيقى">
+          <video src="music/video.mp4" muted playsinline controlslist="nodownload" disablePictureInPicture draggable="false"></video>
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+      </div>
+
+      <input type="checkbox" id="menu-toggle" hidden />
+      <label for="menu-toggle" class="menu-toggle">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </label>
+
+      <div class="nav-overlay"></div>
+
+      <div class="nav">
+        <div class="nav-header">
+          <img src="images/DBD.png" alt="" />
+          <span>dev.bread</span>
+        </div>
+        <div class="nav-body">
+          <a href="#home">Home</a>
+          <a href="#about-me">About Me</a>
+          <a href="#my-skills">My Skills</a>
+          <a href="#current-projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <div class="nav-contact">
+            <p class="contact-phone">
+              <i class="fa-solid fa-phone"></i> +20 109 840 2954
+            </p>
+            <div class="contact-links">
+              <a href="tel:+201098402954"><i class="fa-solid fa-phone"></i></a>
+              <a href="https://discord.com/users/1080073299092054016"><i class="fa-brands fa-discord"></i></a>
+              <a href="https://www.youtube.com/@devbread-db"><i class="fa-brands fa-youtube"></i></a>
+              <a href="https://www.reddit.com/user/Agreeable_Opinion938/"><i class="fa-brands fa-reddit"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about-me">About Me</a>
+        <a href="#my-skills">My Skills</a>
+        <a href="#current-projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <audio id="bg-music" src="music/bg.mp3" loop></audio>
+    </header>
+
+    <main>
+      <div class="about-me" id="about-me">
+        <h1>About <span>Me</span></h1>
+        <div class="about-content">
+          <div class="about-image">
+            <video class="about-video" src="music/video.mp4" muted autoplay playsinline controlslist="nodownload" disablePictureInPicture draggable="false"></video>
+          </div>
+          <div class="about-text">
+            <h3>Who am I?</h3>
+            <p>
+              Hello! I am a developer from Palestine, and I am 16 years old.
+              I started my interest in programming at an early age,
+              where I learned different programming languages. I continue
+              to improve my skills and keep up with the latest technologies and
+              trends in software development. I aspire to be part of the global tech
+              community and make progress in my field.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-skills" id="my-skills">
+        <h1><span>My</span> Skills</h1>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-card-inner">
+              <i class="devicon-python-plain colored"></i>
+              <h2>Python</h2>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card-inner">
+              <i class="devicon-godot-plain colored"></i>
+              <h2>Godot</h2>
+            </div>
+          </div>
+          <div class="skill-card skill-card--minor">
+            <div class="skill-card-inner">
+              <i class="devicon-html5-plain colored"></i>
+              <h2>HTML</h2>
+            </div>
+          </div>
+          <div class="skill-card skill-card--minor">
+            <div class="skill-card-inner">
+              <i class="devicon-css3-plain colored"></i>
+              <h2>CSS</h2>
+            </div>
+          </div>
+          <div class="skill-card skill-card--minor">
+            <div class="skill-card-inner">
+              <i class="devicon-javascript-plain colored"></i>
+              <h2>JavaScript</h2>
+            </div>
+          </div>
+          <div class="skill-card skill-card--minor">
+            <div class="skill-card-inner">
+              <i class="devicon-cplusplus-plain colored"></i>
+              <h2>C++</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="current-projects" id="current-projects">
+        <h1>Current <span>Projects</span></h1>
+        <div class="projects-grid">
+          <div class="project-card">
+            <a href="https://github.com/PanDuroDev/animeiat_cli" target="_blank" class="project-link-main">
+              <i class="fa-brands fa-github"></i>
+              <h3>animeiat_cli</h3>
+            </a>
+            <p>Anime streaming CLI tool</p>
+          </div>
+          <div class="project-card project-card--minor">
+            <a href="https://github.com/PanDuroDev/recore" target="_blank" class="project-link-main">
+              <i class="fa-brands fa-github"></i>
+              <h3>recore</h3>
+            </a>
+            <p>Discord Rich Presence via process detection</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-section" id="contact">
+        <h1>Contact <span>Me</span></h1>
+
+        <p class="contact-phone">
+          <i class="fa-solid fa-phone"></i> +20 109 840 2954
+        </p>
+
+        <div class="contact-links">
+          <a href="tel:+201098402954" title="Phone"><i class="fa-solid fa-phone"></i></a>
+          <a href="https://discord.com/users/1080073299092054016" title="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="https://www.youtube.com/@devbread-db" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.reddit.com/user/Agreeable_Opinion938/" title="Reddit"><i class="fa-brands fa-reddit"></i></a>
+        </div>
+      </div>
+    </main>
+
+    <div id="slide-nav" class="slide-nav">
+      <button id="slide-prev" class="slide-nav-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+      <div id="slide-dots" class="slide-dots"></div>
+      <button id="slide-next" class="slide-nav-btn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <div id="video-overlay" class="video-overlay">
+      <button id="video-close" class="video-close">&times;</button>
+      <div class="video-overlay-content">
+        <div class="video-wrapper">
+          <video src="music/video.mp4" controlslist="nodownload" disablePictureInPicture draggable="false"></video>
+          <button id="vid-big-play" class="vid-big-play"><i class="fa-solid fa-play"></i></button>
+          <div id="video-controls" class="video-controls">
+            <button id="vid-play" class="vid-btn"><i class="fa-solid fa-pause"></i></button>
+            <input type="range" id="vid-progress" class="vid-progress" value="0" min="0" max="100" />
+            <span id="vid-time" class="vid-time">0:00 / 0:00</span>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    <div id="ctx-menu" class="ctx-menu">
+      <div id="ctx-items" class="ctx-items"></div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
