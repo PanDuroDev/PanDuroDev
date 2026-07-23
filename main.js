@@ -87,15 +87,21 @@ switchSlide(location.hash || "#home");
 const audio = document.getElementById("bg-music");
 const btn = document.getElementById("music-toggle");
 const btnVideo = btn?.querySelector("video");
+const aboutVideo = document.querySelector(".about-video");
 
 audio.volume = 0.04;
 
+const syncAllVideos = (t) => {
+  if (btnVideo) btnVideo.currentTime = t;
+  if (aboutVideo) aboutVideo.currentTime = t;
+};
+
 const play = () => {
+  const t = audio.currentTime;
+  syncAllVideos(t);
+  if (btnVideo) btnVideo.play().catch(() => {});
+  if (aboutVideo) aboutVideo.play().catch(() => {});
   audio.play().catch(() => {});
-  if (btnVideo) {
-    btnVideo.currentTime = audio.currentTime;
-    btnVideo.play().catch(() => {});
-  }
   btn.classList.remove("muted");
   btn.querySelector("i").className = "fa-solid fa-volume-high";
   btn.title = "إيقاف الموسيقى";
@@ -103,6 +109,7 @@ const play = () => {
 const pause = () => {
   audio.pause();
   btnVideo?.pause();
+  aboutVideo?.pause();
   btn.classList.add("muted");
   btn.querySelector("i").className = "fa-solid fa-volume-xmark";
   btn.title = "تشغيل الموسيقى";
@@ -110,12 +117,12 @@ const pause = () => {
 
 const tryAutoplay = () => {
   audio.play().then(() => {
+    const t = audio.currentTime;
+    syncAllVideos(t);
+    if (btnVideo) btnVideo.play().catch(() => {});
+    if (aboutVideo) aboutVideo.play().catch(() => {});
     btn.classList.remove("muted");
     btn.querySelector("i").className = "fa-solid fa-volume-high";
-    if (btnVideo) {
-      btnVideo.currentTime = audio.currentTime;
-      btnVideo.play().catch(() => {});
-    }
   }).catch(() => {
     btn.classList.add("muted");
     btn.querySelector("i").className = "fa-solid fa-volume-xmark";
@@ -129,13 +136,14 @@ const overlayVideo = overlay?.querySelector("video");
 if (overlayVideo) overlayVideo.volume = 0.3;
 const closeBtn = document.getElementById("video-close");
 
-const syncBtnVideo = () => {
-  if (!btnVideo || audio.paused || overlay.classList.contains("open")) return;
-  if (Math.abs(btnVideo.currentTime - audio.currentTime) > 0.3) {
-    btnVideo.currentTime = audio.currentTime;
-  }
+const syncVideos = () => {
+  if (audio.paused || overlay.classList.contains("open")) return;
+  const t = audio.currentTime;
+  if (btnVideo && Math.abs(btnVideo.currentTime - t) > 0.3) btnVideo.currentTime = t;
+  if (aboutVideo && Math.abs(aboutVideo.currentTime - t) > 0.3) aboutVideo.currentTime = t;
 };
-audio.addEventListener("timeupdate", syncBtnVideo);
+audio.addEventListener("timeupdate", syncVideos);
+audio.addEventListener("seeked", () => syncAllVideos(audio.currentTime));
 
 let pressTimer = null;
 const LONG_PRESS = 400;
@@ -146,6 +154,7 @@ const startPress = (e) => {
     overlay.classList.add("open");
     document.body.style.overflow = "hidden";
     btnVideo?.pause();
+    aboutVideo?.pause();
     if (overlayVideo) {
       const sync = () => { overlayVideo.currentTime = audio.currentTime; };
       if (overlayVideo.readyState >= 1) sync();
@@ -192,8 +201,9 @@ const closeOverlay = () => {
   document.body.style.overflow = "";
   overlayVideo?.pause();
   if (overlayVideo) {
-    audio.currentTime = overlayVideo.currentTime;
-    if (btnVideo) btnVideo.currentTime = overlayVideo.currentTime;
+    const t = overlayVideo.currentTime;
+    audio.currentTime = t;
+    syncAllVideos(t);
   }
   if (overlay.dataset.wasPlaying === "true") {
     play();
