@@ -267,7 +267,11 @@ main {
 .current-projects.active-slide,
 .contact-section.active-slide {
   display: flex;
-  animation: fadeUp 0.5s 0.05s ease both;
+  animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.slide-out {
+  animation: fadeOut 0.25s ease both;
 }
 
 .about-content {
@@ -348,8 +352,8 @@ main {
   background: var(--surface);
   border-radius: var(--radius-md);
   border: 1px solid var(--surface-alt);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-  animation: fadeUp 0.4s ease both;
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), border-color 0.25s cubic-bezier(0.2, 0, 0, 1);
+  animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .skill-card:nth-child(1) { animation-delay: 0.35s; }
@@ -416,7 +420,7 @@ main {
   background: var(--surface);
   border: 1px solid var(--surface-alt);
   border-radius: var(--radius-md);
-  transition: border-color 0.3s, transform 0.3s;
+  transition: border-color 0.25s cubic-bezier(0.2, 0, 0, 1), transform 0.25s cubic-bezier(0.2, 0, 0, 1);
 }
 .project-card:hover {
   border-color: var(--accent);
@@ -501,7 +505,7 @@ main {
   color: white;
   font-size: 1.3rem;
   text-decoration: none;
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition: background 0.25s cubic-bezier(0.2, 0, 0, 1), border-color 0.25s cubic-bezier(0.2, 0, 0, 1), color 0.25s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .contact-links a:hover {
@@ -968,23 +972,33 @@ main {
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-12px); }
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes overlayContentIn {
+  from { opacity: 0; transform: scale(0.93); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ctxIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .music-btn {
@@ -1049,7 +1063,13 @@ main {
   justify-content: center;
   overflow: hidden;
 }
-.video-overlay.open { display: flex; }
+.video-overlay.open {
+  display: flex;
+  animation: overlayIn .3s ease;
+}
+.video-overlay.open .video-overlay-content {
+  animation: overlayContentIn .35s cubic-bezier(0.16, 1, 0.3, 1);
+}
 .video-overlay-content {
   position: relative;
   width: min(880px, 95vw);

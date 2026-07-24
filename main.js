@@ -44,15 +44,33 @@ slideNext.addEventListener("click", () => {
   switchSlide("#" + slideOrder[next]);
 });
 
+let sliding = false;
+
 const switchSlide = (hash) => {
+  if (sliding) return;
   const id = hash.replace("#", "");
   const target = sections[id];
   if (!target) return;
-  document.querySelectorAll(".about-me, .my-skills, .current-projects, .contact-section")
-    .forEach(s => s.classList.remove("active-slide"));
-  target.classList.add("active-slide");
-  history.replaceState(null, "", hash);
-  updateDots(id);
+  const current = document.querySelector(".about-me.active-slide, .my-skills.active-slide, .current-projects.active-slide, .contact-section.active-slide");
+  if (current === target) return;
+
+  sliding = true;
+
+  if (current) {
+    current.classList.add("slide-out");
+    current.addEventListener("animationend", () => {
+      current.classList.remove("active-slide", "slide-out");
+      target.classList.add("active-slide");
+      history.replaceState(null, "", hash);
+      updateDots(id);
+      sliding = false;
+    }, { once: true });
+  } else {
+    target.classList.add("active-slide");
+    history.replaceState(null, "", hash);
+    updateDots(id);
+    sliding = false;
+  }
 };
 
 /* ── Nav links (desktop) ── */
@@ -569,6 +587,28 @@ tourOverlay.addEventListener("click", (e) => {
   if (e.target.closest(".tour-box")) return;
   closeTour();
 });
+
+/* ── Swipe gesture for slide nav ── */
+
+(() => {
+  let sx = 0, ex = 0;
+  const MIN_SWIPE = 60;
+
+  document.addEventListener("touchstart", (e) => {
+    if (e.target.closest(".tour-overlay, #video-overlay, .nav, .ctx-menu")) return;
+    sx = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  document.addEventListener("touchend", (e) => {
+    if (sx === 0) return;
+    ex = e.changedTouches[0].screenX;
+    const dx = ex - sx;
+    if (Math.abs(dx) < MIN_SWIPE) { sx = 0; return; }
+    if (dx > 0) slidePrev.click();
+    else slideNext.click();
+    sx = 0;
+  }, { passive: true });
+})();
 
 document.getElementById("footer-year").textContent = new Date().getFullYear();
 
