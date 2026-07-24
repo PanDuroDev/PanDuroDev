@@ -243,14 +243,17 @@
       <button id="video-close" class="video-close">&times;</button>
       <div class="video-overlay-content">
         <div class="video-wrapper">
-          <video src="music/video.mp4" controlslist="nodownload" disablePictureInPicture draggable="false"></video>
+          <video id="overlay-video-element" src="music/video.mp4" controlslist="nodownload" disablePictureInPicture draggable="false"></video>
           <button id="vid-big-play" class="vid-big-play"><i class="fa-solid fa-play"></i></button>
           <div id="video-controls" class="video-controls">
+            <button id="vid-prev" class="vid-btn vid-nav-btn" title="السابق"><i class="fa-solid fa-backward-step"></i></button>
             <button id="vid-play" class="vid-btn"><i class="fa-solid fa-pause"></i></button>
+            <button id="vid-next" class="vid-btn vid-nav-btn" title="التالي"><i class="fa-solid fa-forward-step"></i></button>
             <input type="range" id="vid-progress" class="vid-progress" value="0" min="0" max="100" />
             <span id="vid-time" class="vid-time">0:00 / 0:00</span>
           </div>
         </div>
+        <div id="vid-tabs" class="vid-tabs"></div>
         </div>
       </div>
 

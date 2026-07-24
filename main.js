@@ -144,9 +144,58 @@ tryAutoplay();
 document.addEventListener("click", tryAutoplay, { once: true });
 
 const overlay = document.getElementById("video-overlay");
-const overlayVideo = overlay?.querySelector("video");
+const overlayVideo = document.getElementById("overlay-video-element");
 if (overlayVideo) overlayVideo.volume = 0.3;
 const closeBtn = document.getElementById("video-close");
+
+/* ── Video playlist ── */
+
+const playlist = [
+  { video: "music/video.mp4", audio: "music/bg.mp3", title: "Video 1" },
+  { video: "music/video2.mp4", audio: "music/bg2.mp3", title: "Video 2" },
+];
+let currentVidIdx = 0;
+
+const vidTabsContainer = document.getElementById("vid-tabs");
+const vidPrevBtn = document.getElementById("vid-prev");
+const vidNextBtn = document.getElementById("vid-next");
+
+const switchVideo = (idx) => {
+  if (idx < 0 || idx >= playlist.length) return;
+  const wasOpen = overlay.classList.contains("open");
+  const wasPlaying = overlayVideo && !overlayVideo.paused;
+  const prevTime = overlayVideo?.currentTime || 0;
+
+  currentVidIdx = idx;
+  const entry = playlist[idx];
+  overlayVideo.src = entry.video;
+  overlayVideo.load();
+
+  document.querySelectorAll(".vid-tab").forEach((t, i) => t.classList.toggle("active", i === idx));
+
+  if (wasOpen) {
+    overlayVideo.currentTime = prevTime;
+    if (wasPlaying) overlayVideo.play().catch(() => {});
+    updateControls();
+  }
+};
+
+playlist.forEach((entry, i) => {
+  const tab = document.createElement("button");
+  tab.className = `vid-tab${i === 0 ? " active" : ""}`;
+  tab.textContent = entry.title;
+  tab.addEventListener("click", () => switchVideo(i));
+  vidTabsContainer.appendChild(tab);
+});
+
+vidPrevBtn?.addEventListener("click", () => {
+  const prev = (currentVidIdx - 1 + playlist.length) % playlist.length;
+  switchVideo(prev);
+});
+vidNextBtn?.addEventListener("click", () => {
+  const next = (currentVidIdx + 1) % playlist.length;
+  switchVideo(next);
+});
 
 const syncVideos = () => {
   if (audio.paused || overlay.classList.contains("open")) return;

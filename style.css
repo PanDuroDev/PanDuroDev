@@ -1118,8 +1118,8 @@ main {
   right: 0;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 14px 10px;
+  gap: 8px;
+  padding: 8px 12px 10px;
   background: linear-gradient(transparent, rgba(0,0,0,.85));
   opacity: 1;
   transition: opacity .35s;
@@ -1127,13 +1127,13 @@ main {
 }
 .video-controls.hidden { opacity: 0; pointer-events: none; }
 .vid-btn {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border: none;
   border-radius: var(--radius-full);
   background: var(--accent);
   color: var(--bg-dark);
-  font-size: 17px;
+  font-size: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1143,6 +1143,16 @@ main {
 }
 .vid-btn:hover { transform: scale(1.1); }
 .vid-btn:active { transform: scale(.95); }
+.vid-nav-btn {
+  background: rgba(255,255,255,.15);
+  color: white;
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+.vid-nav-btn:hover {
+  background: rgba(255,255,255,.25);
+}
 .vid-progress {
   flex: 1;
   height: 5px;
@@ -1215,6 +1225,36 @@ main {
   opacity: 0;
   pointer-events: none;
   transform: translate(-50%, -50%) scale(.8);
+}
+
+.vid-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--bg-dark);
+  border-top: 1px solid var(--surface-alt);
+  flex-wrap: wrap;
+}
+.vid-tab {
+  font-family: var(--font-body);
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--surface-alt);
+  background: var(--surface);
+  color: rgba(255,255,255,.6);
+  cursor: pointer;
+  transition: .2s;
+}
+.vid-tab:hover {
+  border-color: var(--accent-border);
+  color: white;
+}
+.vid-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-dark);
+  font-weight: 600;
 }
 
 .ctx-menu {
