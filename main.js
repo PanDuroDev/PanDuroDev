@@ -165,11 +165,36 @@ const switchVideo = (idx) => {
   const wasOpen = overlay.classList.contains("open");
   const wasPlaying = overlayVideo && !overlayVideo.paused;
   const prevTime = overlayVideo?.currentTime || 0;
+  const wasAudioPlaying = !audio.paused;
 
   currentVidIdx = idx;
   const entry = playlist[idx];
+
+  if (audio.src.indexOf(entry.audio) === -1) {
+    audio.src = entry.audio;
+    audio.load();
+    if (wasAudioPlaying) {
+      audio.currentTime = prevTime;
+      audio.play().catch(() => {});
+    }
+  }
+
   overlayVideo.src = entry.video;
   overlayVideo.load();
+
+  if (btnVideo && btnVideo.src.indexOf(entry.video) === -1) {
+    btnVideo.src = entry.video;
+    btnVideo.load();
+    if (!audio.paused) {
+      btnVideo.currentTime = audio.currentTime;
+      btnVideo.play().catch(() => {});
+    }
+  }
+  if (aboutVideo && aboutVideo.src.indexOf(entry.video) === -1) {
+    aboutVideo.src = entry.video;
+    aboutVideo.load();
+    aboutVideo.play().catch(() => {});
+  }
 
   document.querySelectorAll(".vid-tab").forEach((t, i) => t.classList.toggle("active", i === idx));
 
