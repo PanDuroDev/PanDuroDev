@@ -1080,7 +1080,8 @@ main {
 }
 .video-overlay-content {
   position: relative;
-  width: min(880px, 95vw);
+  flex: 1;
+  max-width: min(720px, 60vw);
   border: 1px solid var(--accent-border);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -1269,6 +1270,11 @@ main {
     flex-direction: column;
     gap: 12px;
     padding: 12px;
+  }
+  .video-overlay-content {
+    max-width: 95vw;
+    flex: none;
+    width: 100%;
   }
   .vid-tabs {
     flex-direction: row;
