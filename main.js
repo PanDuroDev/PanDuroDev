@@ -58,13 +58,13 @@ const switchSlide = (hash) => {
 
   if (current) {
     current.classList.add("slide-out");
-    current.addEventListener("animationend", () => {
+    setTimeout(() => {
       current.classList.remove("active-slide", "slide-out");
       target.classList.add("active-slide");
       history.replaceState(null, "", hash);
       updateDots(id);
       sliding = false;
-    }, { once: true });
+    }, 250);
   } else {
     target.classList.add("active-slide");
     history.replaceState(null, "", hash);
