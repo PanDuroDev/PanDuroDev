@@ -1381,19 +1381,6 @@ main {
 .tour-highlight.visible {
   display: block;
 }
-.tour-highlight::before {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border-radius: calc(var(--radius-md) + 4px);
-  box-shadow: 0 0 20px rgba(0,214,214,.25);
-  pointer-events: none;
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-@keyframes pulseGlow {
-  0%, 100% { opacity: .4; }
-  50% { opacity: 1; }
-}
 .tour-box {
   position: fixed;
   z-index: 2;
@@ -1403,7 +1390,7 @@ main {
   padding: 24px;
   min-width: 280px;
   max-width: 360px;
-  box-shadow: 0 8px 32px rgba(0,0,0,.6), 0 0 40px rgba(0,214,214,.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,.6);
   animation: tourIn .35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .tour-box::before {
