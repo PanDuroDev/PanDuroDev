@@ -541,7 +541,7 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 40px;
+    gap: 30px;
     margin-top: 20px;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -554,9 +554,22 @@ main {
     align-items: center;
   }
 
+  .about-video {
+    max-width: 320px;
+    transform: scale(1.04);
+  }
+
   .about-text {
     width: 100%;
-    padding: 0 10px;
+    padding: 0 16px;
+  }
+
+  .about-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
   }
 
   .skill-card {
@@ -564,6 +577,12 @@ main {
     width: auto;
     padding: 18px 12px;
     gap: 8px;
+  }
+
+  .project-card {
+    flex-basis: calc(50% - 12px);
+    width: auto;
+    padding: 20px 16px;
   }
 }
 
@@ -803,6 +822,78 @@ main {
     color: black;
   }
 
+  /* ── About section mobile ── */
+
+  .about-video {
+    max-width: 260px;
+    transform: scale(1);
+  }
+
+  .about-text {
+    padding: 0 8px;
+  }
+
+  .about-text h3 {
+    font-size: 1.15rem;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+  }
+
+  .about-content {
+    gap: 20px;
+  }
+
+  /* ── Projects mobile ── */
+
+  .project-card {
+    flex-basis: calc(50% - 6px);
+    width: auto;
+    padding: 16px 12px;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+  }
+
+  .project-link-main i {
+    font-size: 1.5rem;
+  }
+
+  .project-card--minor i {
+    font-size: 1.2rem;
+  }
+
+  .project-card--minor h3 {
+    font-size: 0.85rem;
+  }
+
+  .project-card p {
+    font-size: 0.8rem;
+  }
+
+  /* ── Contact mobile ── */
+
+  .contact-links a {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .contact-phone {
+    font-size: 0.95rem;
+  }
+
+  /* ── Section titles mobile ── */
+
+  .about-me h1,
+  .my-skills h1,
+  .current-projects h1,
+  .contact-section h1 {
+    font-size: 1.5rem;
+  }
+
   /* ── Overlay backdrop ── */
 
   .nav-overlay {
@@ -861,6 +952,18 @@ main {
 @media (max-width: 400px) {
   .skill-card {
     flex-basis: 100%;
+  }
+
+  .project-card {
+    flex-basis: 100%;
+  }
+
+  .about-video {
+    max-width: 200px;
+  }
+
+  .about-text p {
+    font-size: 0.85rem;
   }
 }
 
