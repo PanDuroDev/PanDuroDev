@@ -551,21 +551,6 @@ const clearConnector = () => {
   tourConnector.style.display = "none";
 };
 
-tourNext.addEventListener("click", () => {
-  if (tourStepIdx === tourSteps.length - 1) {
-    closeTour();
-    return;
-  }
-  tourStepIdx++;
-  showTourStep(tourStepIdx);
-});
-tourPrev.addEventListener("click", () => {
-  if (tourStepIdx === 0) return;
-  tourStepIdx--;
-  showTourStep(tourStepIdx);
-});
-tourSkip.addEventListener("click", closeTour);
-
 const closeTour = () => {
   tourOverlay.classList.remove("open");
   tourHighlight.classList.remove("visible");
@@ -587,6 +572,21 @@ tourOverlay.addEventListener("click", (e) => {
   if (e.target.closest(".tour-box")) return;
   closeTour();
 });
+
+tourNext.addEventListener("click", () => {
+  if (tourStepIdx === tourSteps.length - 1) {
+    closeTour();
+    return;
+  }
+  tourStepIdx++;
+  showTourStep(tourStepIdx);
+});
+tourPrev.addEventListener("click", () => {
+  if (tourStepIdx === 0) return;
+  tourStepIdx--;
+  showTourStep(tourStepIdx);
+});
+tourSkip.addEventListener("click", closeTour);
 
 /* ── Swipe gesture for slide nav ── */
 
