@@ -119,14 +119,14 @@ const play = () => {
   audio.play().catch(() => {});
   btn.classList.remove("muted");
   btn.querySelector("i").className = "fa-solid fa-volume-high";
-  btn.title = "إيقاف الموسيقى";
+  btn.title = "Stop music";
 };
 const pause = () => {
   audio.pause();
   btnVideo?.pause();
   btn.classList.add("muted");
   btn.querySelector("i").className = "fa-solid fa-volume-xmark";
-  btn.title = "تشغيل الموسيقى";
+  btn.title = "Play music";
 };
 
 const tryAutoplay = () => {
@@ -540,26 +540,26 @@ const tourSkip = document.getElementById("tour-skip");
 const tourSteps = [
   {
     target: null,
-    title: "! أهلاً بك",
-    desc: "هذا دليل سريع لمساعدتك في التنقل في الموقع. اضغط على <b>التالي</b> للمتابعة.",
+    title: "Welcome!",
+    desc: "This is a quick guide to help you navigate the site. Click <b>Next</b> to continue.",
     pos: "center",
   },
   {
     target: "#music-toggle",
-    title: "زر الموسيقى",
-    desc: 'اضغط <b>ضغطة قصيرة</b> لتشغيل / إيقاف الموسيقى.<br><br>اضغط <b>ضغطة طويلة</b> (400ms) لفتح مشغل الفيديو كامل الشاشة مع عناصر تحكم مخصصة.',
+    title: "Music Button",
+    desc: 'Press <b>short press</b> to play / stop music.<br><br>Press <b>long press</b> (400ms) to open the full-screen video player with custom controls.',
     pos: "bottom",
   },
   {
     target: "header > nav",
-    title: "التنقل",
-    desc: 'استخدم روابط التنقل في الأعلى للانتقال بين الأقسام.<br><br>في الجوال، افتح القائمة من أيقونة الخطوط الثلاثة (☰).<br><br>يمكنك أيضاً استخدام الأسهم ∞ والنقاط في الأسفل.',
+    title: "Navigation",
+    desc: 'Use the navigation links at the top to move between sections.<br><br>On mobile, open the menu from the hamburger icon (☰).<br><br>You can also use the arrows and dots at the bottom.',
     pos: "bottom",
   },
   {
     target: null,
-    title: "! انتهينا",
-    desc: "يمكنك فتح هذا الدليل مرة أخرى من قائمة الزر الأيمن (Context Menu) في أي وقت.",
+    title: "Done!",
+    desc: "You can open this guide again from the Context Menu at any time.",
     pos: "center",
   },
 ];
@@ -572,7 +572,7 @@ const showTourStep = (idx) => {
   tourDesc.innerHTML = step.desc;
   tourStep.textContent = `${idx + 1} / ${tourSteps.length}`;
   tourPrev.classList.toggle("hidden", idx === 0);
-  tourNext.textContent = idx === tourSteps.length - 1 ? "تم" : "التالي";
+  tourNext.textContent = idx === tourSteps.length - 1 ? "Done" : "Next";
 
   tourHighlight.classList.remove("visible");
   tourConnector.className = "tour-connector";
