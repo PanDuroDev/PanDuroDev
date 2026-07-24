@@ -1229,16 +1229,19 @@ main {
 
 .vid-tabs {
   display: flex;
-  gap: 6px;
-  padding: 8px 12px;
+  gap: 8px;
+  padding: 10px 12px 12px;
   background: var(--bg-dark);
   border-top: 1px solid var(--surface-alt);
   flex-wrap: wrap;
 }
 .vid-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-body);
   font-size: 12px;
-  padding: 5px 12px;
+  padding: 6px 12px 6px 6px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--surface-alt);
   background: var(--surface);
@@ -1246,15 +1249,26 @@ main {
   cursor: pointer;
   transition: .2s;
 }
+.vid-tab img {
+  width: 40px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
+}
 .vid-tab:hover {
   border-color: var(--accent-border);
   color: white;
+  background: var(--surface-alt);
 }
 .vid-tab.active {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--bg-dark);
   font-weight: 600;
+}
+.vid-tab.active img {
+  box-shadow: 0 0 0 1px var(--bg-dark);
 }
 
 .ctx-menu {

@@ -151,8 +151,8 @@ const closeBtn = document.getElementById("video-close");
 /* ── Video playlist ── */
 
 const playlist = [
-  { video: "music/video.mp4", audio: "music/bg.mp3", title: "Video 1" },
-  { video: "music/video2.mp4", audio: "music/bg2.mp3", title: "Video 2" },
+  { video: "music/video.mp4", audio: "music/bg.mp3", title: "Bleach OP 6", thumb: "music/thumb1.jpg" },
+  { video: "music/video2.mp4", audio: "music/bg2.mp3", title: "Bleach OP 13", thumb: "music/thumb2.jpg" },
 ];
 let currentVidIdx = 0;
 
@@ -208,7 +208,7 @@ const switchVideo = (idx) => {
 playlist.forEach((entry, i) => {
   const tab = document.createElement("button");
   tab.className = `vid-tab${i === 0 ? " active" : ""}`;
-  tab.textContent = entry.title;
+  tab.innerHTML = `<img src="${entry.thumb}" alt="${entry.title}" loading="lazy" /><span>${entry.title}</span>`;
   tab.addEventListener("click", () => switchVideo(i));
   vidTabsContainer.appendChild(tab);
 });
