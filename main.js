@@ -208,7 +208,7 @@ const switchVideo = (idx) => {
 playlist.forEach((entry, i) => {
   const tab = document.createElement("button");
   tab.className = `vid-tab${i === 0 ? " active" : ""}`;
-  tab.innerHTML = `<img src="${entry.thumb}" alt="${entry.title}" loading="lazy" /><span class="vid-tab-title">${entry.title}</span>`;
+  tab.innerHTML = `<img src="${entry.thumb}" alt="" loading="lazy" />`;
   tab.addEventListener("click", () => switchVideo(i));
   vidTabsContainer.appendChild(tab);
 });
