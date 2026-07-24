@@ -825,7 +825,7 @@ main {
   /* ── About section mobile ── */
 
   .about-video {
-    max-width: 260px;
+    max-width: 320px;
     transform: scale(1);
   }
 
